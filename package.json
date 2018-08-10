@@ -1,5 +1,5 @@
 {
-  "name": "list-files-path",
+  "name": "@waltercj/list-files-path",
   "version": "1.0.0",
   "description": "List all paths in a directory",
   "main": "index.js",
