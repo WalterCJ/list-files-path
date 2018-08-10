@@ -1,4 +1,5 @@
 const fs = require ('fs')
+const path = require('path')
 
 /**
  * List all files in this path.
@@ -12,9 +13,10 @@ const listFilePath = function(originPath){
         return 
     } 
     return fs.readdirSync(originPath)
-        .filter(file => {
-            return !isUnixHiddenPath(file)
-        })
+            .filter(file => {
+                    const stats = fs.statSync(path.join(originPath, file))            
+                    return ( !isUnixHiddenPath(file) && stats.isFile() )
+                })
 }
 
 /**
