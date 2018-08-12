@@ -9,8 +9,7 @@ const path = require('path')
 const listFilePath = function(originPath){
     //Check if path exist
     if (!fs.existsSync(originPath)){
-        console.log(Error (originPath +' does not exist!'))
-        return 
+        throw new Error(originPath +' does not exist!')       
     } 
     return fs.readdirSync(originPath)
             .filter(file => {
