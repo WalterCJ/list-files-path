@@ -4,22 +4,23 @@ const util = require('./util/handleFolders')
 var expect = require('chai').expect;
 
 describe('listFilePath', function () {
-    before(function(done) { 
-        util.createFiles()
-        done()
+    let dirname,files
+    before(async function() { 
+        await util.createFiles()
+        dirname = path.join(__dirname, '/util/files_origin')
+        files = file.listFilePath(dirname) 
     });
-    describe('listFilePath', function () {
-        const dirname = path.join(__dirname, '/util/files_origin')        
-        it('Should return a list of files name', function () {
-            const files = file.listFilePath(dirname)       
+    describe('listFilePath', function () {        
+        it('Should throw a error if path does not exist', function () {
+            
+        })        
+        it('Should return a list of files name', function () { 
             expect(files).to.be.a('array');
         })
         it('Should return a list without hidden files', function () {
-            const files = file.listFilePath(dirname)
             expect(files).to.not.include('.files0')
         })
         it('Should return a list without folders', function () {
-            const files = file.listFilePath(dirname)
             expect(files).to.be.an('array').to.not.include('.test')
             expect(files).to.be.an('array').to.not.include('test2')
         })
