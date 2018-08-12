@@ -12,10 +12,10 @@ describe('listFilePath', function () {
     });
     describe('listFilePath', function () {        
         it('Should throw a error if path does not exist', function () {
-            
+            expect(file.listFilePath).to.throw()
         })        
         it('Should return a list of files name', function () { 
-            expect(files).to.be.a('array');
+            expect(files).to.be.a('array')
         })
         it('Should return a list without hidden files', function () {
             expect(files).to.not.include('.files0')
